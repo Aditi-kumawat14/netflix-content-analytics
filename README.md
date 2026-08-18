@@ -92,3 +92,4 @@ netflix-content-analytics/
 ├── netflix_cleaned.csv
 ├── requirements.txt
 ├── README.md
+├── Netflix_Data_Analysis.ipynb
