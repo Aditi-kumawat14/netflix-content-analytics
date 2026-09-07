@@ -30,43 +30,27 @@ DARK_RED = "#B20710"
 @st.cache_data
 def load_data():
 
-    df = pd.read_csv(
-        "netflix_cleaned1.csv",
-        encoding="utf-8"
-    )
+    df = pd.read_csv("netflix_cleaned1.csv",encoding="utf-8")
 
     # Clean column names
-    df.columns = (
-        df.columns
-        .str.strip()
-        .str.lower()
-    )
+    df.columns = ( df.columns.str.strip().str.lower() )
 
     # Date
     if "date_added" in df.columns:
 
-        df["date_added"] = pd.to_datetime(
-            df["date_added"],
-            errors="coerce"
-        )
+        df["date_added"] = pd.to_datetime(df["date_added"],errors="coerce" )
 
     # Year added
     if "year_added" not in df.columns:
 
         if "date_added" in df.columns:
 
-            df["year_added"] = (
-                df["date_added"]
-                .dt.year
-            )
+            df["year_added"] = (df["date_added"].dt.year)
 
     # Release year
     if "release_year" in df.columns:
 
-        df["release_year"] = pd.to_numeric(
-            df["release_year"],
-            errors="coerce"
-        )
+        df["release_year"] = pd.to_numeric(df["release_year"],errors="coerce")
 
     return df
 
@@ -983,95 +967,6 @@ st.html(
         margin-bottom: 5px;
     }}
 
-        /* ========================================================
-       THEME TOGGLE
-       ======================================================== */
-
-    .sidebar-theme-heading {{
-        margin:
-            0
-            8px
-            8px
-            8px;
-
-        font-size: 9px;
-        font-weight: 800;
-        letter-spacing: 2px;
-        opacity: 0.38;
-    }}
-
-    /* Keep the toggle compact */
-    [data-testid="stSidebar"]
-    [data-testid="stToggle"] {{
-        margin:
-            0
-            3px;
-
-        padding: 4px 8px;
-
-        border-radius: 9px;
-        transition: background 0.2s ease;
-    }}
-
-    [data-testid="stSidebar"]
-    [data-testid="stToggle"]:hover {{
-        background:
-            rgba(229,9,20,0.045);
-    }}
-
-    /* Toggle label */
-    [data-testid="stSidebar"]
-    [data-testid="stToggle"] label {{
-        font-size: 12px;
-        font-weight: 550;
-    }}
-
-    /* Small red accent when enabled */
-    [data-testid="stSidebar"]
-    [data-testid="stToggle"] input:checked + div {{
-        background-color: {RED} !important;
-    }}
-
-    /* ========================================================
-       LIGHT / DARK THEME
-       ======================================================== */
-
-    /* Light mode */
-    :root {{
-        --netflix-bg: #ffffff;
-        --netflix-text: #0f172a;
-        --netflix-card: rgba(128,128,128,0.08);
-        --netflix-border: rgba(128,128,128,0.20);
-    }}
-
-    /* Dark mode */
-    {"" if not dark_mode else """
-    :root {
-        --netflix-bg: #0f1117;
-        --netflix-text: #f5f5f5;
-        --netflix-card: rgba(255,255,255,0.06);
-        --netflix-border: rgba(255,255,255,0.14);
-    }
-    """}
-
-    /* Apply only theme colors */
-    [data-testid="stAppViewContainer"] {{
-        background: var(--netflix-bg);
-        color: var(--netflix-text);
-    }}
-
-    [data-testid="stSidebar"] {{
-        background: var(--netflix-bg);
-    }}
-
-    .kpi-container,
-    .insight-card,
-    .about-card {{
-        background: var(--netflix-card);
-        border-color: var(--netflix-border);
-    }}
-    
-
     </style>
     """
 )
@@ -1288,6 +1183,7 @@ with st.sidebar:
         """
     )
 
+    
 
     # --------------------------------------------------------
     # SIDEBAR FOOTER
@@ -2445,25 +2341,6 @@ elif page == "About Project":
         """
     )
 
-# --------------------------------------------------------
-# THEME TOGGLE
-# --------------------------------------------------------
-
-st.html(
-    """
-    <div class="sidebar-divider"></div>
-    <div class="sidebar-theme-heading">
-        APPEARANCE
-    </div>
-    """
-)
-
-dark_mode = st.toggle(
-    "Dark Mode",
-    value=st.session_state.dark_mode,
-    key="dark_mode",
-    help="Switch between light and dark mode"
-)
 
 # ============================================================
 # FOOTER
