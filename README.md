@@ -133,7 +133,7 @@ The Excel dashboard provides a business-style visual analysis of Netflix Movies 
 
 ### Excel Dashboard Preview
 
-![Netflix Excel Dashboard](screenshots/netflix-dashboard.png)
+![Netflix Excel Dashboard](screenshots/netflix_excel_dashboard.png)
 
 ### Excel Dashboard File
 
